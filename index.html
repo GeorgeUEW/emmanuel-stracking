@@ -2176,63 +2176,125 @@ textarea.form-input { resize: vertical; min-height: 70px; }
       </div>
 
         <div class="spane" id="sp-sms">
-          <div class="card" style="max-width:680px">
+          <div class="card" style="max-width:700px">
             <div class="card-hd">
               <div>
                 <div class="card-title">SMS Notifications</div>
-                <div class="card-subtitle">Powered by Africa's Talking API</div>
+                <div class="card-subtitle">Powered by Hubtel — Ghana&#39;s leading SMS platform</div>
               </div>
               <span class="badge" id="sms-status-badge" style="background:var(--surface-3);color:var(--t3);border:1px solid var(--border)">Disabled</span>
             </div>
             <div class="card-body">
+
+              <!-- Hubtel logo strip -->
+              <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:linear-gradient(135deg,#0D47A1 0%,#1565C0 100%);border-radius:var(--radius-md);margin-bottom:1.1rem">
+                <div style="width:36px;height:36px;background:#fff;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#0D47A1" stroke-width="2.5" stroke-linecap="round" style="width:18px;height:18px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l1.62-1.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div style="font-size:.8rem;font-weight:700;color:#fff;letter-spacing:-.02em">Hubtel SMS</div>
+                  <div style="font-size:.68rem;color:rgba(255,255,255,.65)">Ghana-focused · Supports MTN, Vodafone, AirtelTigo &amp; more</div>
+                </div>
+                <div style="margin-left:auto;font-size:.68rem;color:rgba(255,255,255,.5)">hubtel.com</div>
+              </div>
+
               <!-- API credentials -->
+              <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t4);margin-bottom:.65rem">API Credentials</div>
               <div class="fg" style="margin-bottom:1rem">
                 <div>
-                  <label class="form-label">API Username</label>
-                  <input class="form-input" id="sms-api-user" placeholder="Your Africa's Talking username"/>
+                  <label class="form-label">Client ID</label>
+                  <input class="form-input" id="sms-api-user" placeholder="Your Hubtel Client ID"/>
                 </div>
                 <div>
-                  <label class="form-label">API Key</label>
-                  <input class="form-input" type="password" id="sms-api-key" placeholder="Your API key"/>
+                  <label class="form-label">Client Secret</label>
+                  <input class="form-input" type="password" id="sms-api-key" placeholder="Your Hubtel Client Secret"/>
                 </div>
                 <div>
-                  <label class="form-label">Sender ID / From</label>
-                  <input class="form-input" id="sms-sender" placeholder="e.g. FuelStation (or leave blank)"/>
+                  <label class="form-label">Sender ID</label>
+                  <input class="form-input" id="sms-sender" placeholder="e.g. FuelStation (max 11 chars)"/>
                 </div>
                 <div>
                   <label class="form-label">Admin Phone Number</label>
-                  <input class="form-input" id="sms-phone" placeholder="e.g. +233244123456"/>
+                  <input class="form-input" id="sms-phone" placeholder="e.g. 0244123456 or +233244123456"/>
                 </div>
               </div>
+
               <div class="divider"></div>
+
               <!-- Notification toggles -->
-              <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--t4);margin-bottom:.65rem">Notify me when…</div>
+              <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t4);margin-bottom:.65rem">Notify Me When&hellip;</div>
               <div class="sms-toggle-row">
-                <div><div class="sms-toggle-label">New Sale Recorded</div><div class="sms-toggle-desc">Get an SMS for every fuel purchase logged</div></div>
+                <div>
+                  <div class="sms-toggle-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px;display:inline;margin-right:.35rem;color:var(--brand)"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    New Sale Recorded
+                  </div>
+                  <div class="sms-toggle-desc">Get an SMS for every fuel purchase logged in the system</div>
+                </div>
                 <label class="toggle-switch"><input type="checkbox" id="sms-t-sale" checked/><span class="toggle-slider"></span></label>
               </div>
               <div class="sms-toggle-row">
-                <div><div class="sms-toggle-label">Low Fuel Stock Warning</div><div class="sms-toggle-desc">Alert when petrol or diesel drops below 300 L</div></div>
+                <div>
+                  <div class="sms-toggle-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px;display:inline;margin-right:.35rem;color:var(--warn)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    Low Fuel Stock Warning
+                  </div>
+                  <div class="sms-toggle-desc">Alert when Petrol or Diesel drops below 300 litres</div>
+                </div>
                 <label class="toggle-switch"><input type="checkbox" id="sms-t-low" checked/><span class="toggle-slider"></span></label>
               </div>
               <div class="sms-toggle-row">
-                <div><div class="sms-toggle-label">New User Registered</div><div class="sms-toggle-desc">Alert when a new account is created</div></div>
+                <div>
+                  <div class="sms-toggle-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:13px;height:13px;display:inline;margin-right:.35rem;color:var(--info)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    New User Registered
+                  </div>
+                  <div class="sms-toggle-desc">Alert when a new account is created on the system</div>
+                </div>
                 <label class="toggle-switch"><input type="checkbox" id="sms-t-user" checked/><span class="toggle-slider"></span></label>
               </div>
-              <div class="sms-toggle-row">
-                <div><div class="sms-toggle-label">SMS Notifications Enabled</div><div class="sms-toggle-desc">Master switch — turns all SMS on or off</div></div>
+
+              <div class="divider"></div>
+
+              <!-- Master toggle + actions -->
+              <div class="sms-toggle-row" style="background:var(--brand-lt);border-color:var(--brand-lt2)">
+                <div>
+                  <div class="sms-toggle-label" style="color:var(--brand-dk)">Enable SMS Notifications</div>
+                  <div class="sms-toggle-desc">Master switch — turns all Hubtel SMS alerts on or off</div>
+                </div>
                 <label class="toggle-switch"><input type="checkbox" id="sms-master"/><span class="toggle-slider"></span></label>
               </div>
-              <div class="divider"></div>
-              <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-                <button class="btn btn-primary" id="save-sms-btn">Save SMS Settings</button>
-                <button class="btn btn-secondary btn-sm" id="test-sms-btn">Send Test SMS</button>
+
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:1rem">
+                <button class="btn btn-primary" id="save-sms-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  Save Settings
+                </button>
+                <button class="btn btn-secondary btn-sm" id="test-sms-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l1.62-1.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  Send Test SMS
+                </button>
                 <div class="sms-result" id="sms-result"></div>
               </div>
-              <div style="margin-top:1rem;padding:.75rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)">
-                <div style="font-size:.72rem;font-weight:700;color:var(--t3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.05em">&#128161; How to get your Africa's Talking API Key</div>
-                <div style="font-size:.75rem;color:var(--t4);line-height:1.7">1. Go to <strong style="color:var(--brand)">africastalking.com</strong> and create a free account<br/>2. Create an app in your dashboard &amp; copy the API Key<br/>3. Use <strong>sandbox</strong> username for testing, your real username for production<br/>4. Add credit to your account to send live messages</div>
+
+              <!-- Setup guide -->
+              <div style="margin-top:1.1rem;padding:.9rem 1rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md)">
+                <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.65rem">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px;color:var(--brand);flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span style="font-size:.72rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.05em">How to set up Hubtel SMS</span>
+                </div>
+                <div style="font-size:.76rem;color:var(--t3);line-height:1.85">
+                  <div style="margin-bottom:.3rem">&#49;&#65039;&#8419; Go to <strong style="color:var(--brand)">hubtel.com</strong> and create a Business account</div>
+                  <div style="margin-bottom:.3rem">&#50;&#65039;&#8419; Navigate to <strong>SMS &rarr; API Access</strong> and generate your <strong>Client ID</strong> &amp; <strong>Client Secret</strong></div>
+                  <div style="margin-bottom:.3rem">&#51;&#65039;&#8419; Register a <strong>Sender ID</strong> (your station name, e.g. <em>FuelStation</em>) — takes 1–2 business days to approve</div>
+                  <div style="margin-bottom:.3rem">&#52;&#65039;&#8419; Top up your Hubtel wallet with GHS to send messages</div>
+                  <div>&#53;&#65039;&#8419; Paste your credentials above, enter your phone number, save &amp; send a test SMS to confirm it works</div>
+                </div>
+                <div style="margin-top:.75rem;padding:.55rem .75rem;background:var(--warn-bg);border:1px solid var(--warn-bdr);border-radius:var(--radius-sm);font-size:.72rem;color:var(--warn);font-weight:500">
+                  &#9888;&#65039; SMS sending requires a backend proxy in production due to browser CORS restrictions. Use the <strong>sandbox</strong> mode on hubtel.com for local testing.
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -3397,9 +3459,9 @@ class App {
 
   /* ── SMS NOTIFICATIONS ── */
   _loadSMSSettings(){
-    const s=DB.get('_sms',{enabled:false,apiUser:'',apiKey:'',sender:'',phone:'',onSale:true,onLow:true,onUser:true});
-    document.getElementById('sms-api-user').value=s.apiUser||'';
-    document.getElementById('sms-api-key').value=s.apiKey||'';
+    const s=DB.get('_sms',{enabled:false,clientId:'',clientSecret:'',sender:'',phone:'',onSale:true,onLow:true,onUser:true});
+    document.getElementById('sms-api-user').value=s.clientId||'';
+    document.getElementById('sms-api-key').value=s.clientSecret||'';
     document.getElementById('sms-sender').value=s.sender||'';
     document.getElementById('sms-phone').value=s.phone||'';
     document.getElementById('sms-t-sale').checked=s.onSale!==false;
@@ -3407,60 +3469,109 @@ class App {
     document.getElementById('sms-t-user').checked=s.onUser!==false;
     document.getElementById('sms-master').checked=!!s.enabled;
     const badge=document.getElementById('sms-status-badge');
-    if(badge){ badge.textContent=s.enabled?'Enabled':'Disabled'; badge.style.cssText=s.enabled?'background:var(--diesel-bg);color:var(--diesel);border:1px solid var(--diesel-bdr)':'background:var(--surface-3);color:var(--t3);border:1px solid var(--border)'; }
+    if(badge){
+      badge.textContent=s.enabled?'Enabled':'Disabled';
+      badge.style.cssText=s.enabled
+        ?'background:var(--diesel-bg);color:var(--diesel);border:1px solid var(--diesel-bdr)'
+        :'background:var(--surface-3);color:var(--t3);border:1px solid var(--border)';
+    }
   }
 
   saveSMSSettings(){
     const s={
-      enabled:document.getElementById('sms-master').checked,
-      apiUser:document.getElementById('sms-api-user').value.trim(),
-      apiKey:document.getElementById('sms-api-key').value.trim(),
-      sender:document.getElementById('sms-sender').value.trim(),
-      phone:document.getElementById('sms-phone').value.trim(),
-      onSale:document.getElementById('sms-t-sale').checked,
-      onLow:document.getElementById('sms-t-low').checked,
-      onUser:document.getElementById('sms-t-user').checked,
+      enabled: document.getElementById('sms-master').checked,
+      clientId: document.getElementById('sms-api-user').value.trim(),
+      clientSecret: document.getElementById('sms-api-key').value.trim(),
+      sender: document.getElementById('sms-sender').value.trim().slice(0,11),
+      phone: document.getElementById('sms-phone').value.trim(),
+      onSale: document.getElementById('sms-t-sale').checked,
+      onLow:  document.getElementById('sms-t-low').checked,
+      onUser: document.getElementById('sms-t-user').checked,
     };
     DB.set('_sms',s);
-    this._audit('settings','SMS settings updated',`Enabled: ${s.enabled}, Phone: ${s.phone}`);
-    this.toast(s.enabled?'SMS notifications enabled ✓':'SMS settings saved');
+    // Update badge immediately
+    const badge=document.getElementById('sms-status-badge');
+    if(badge){
+      badge.textContent=s.enabled?'Enabled':'Disabled';
+      badge.style.cssText=s.enabled
+        ?'background:var(--diesel-bg);color:var(--diesel);border:1px solid var(--diesel-bdr)'
+        :'background:var(--surface-3);color:var(--t3);border:1px solid var(--border)';
+    }
+    this._audit('settings','Hubtel SMS settings updated',`Enabled: ${s.enabled}, Phone: ${s.phone}`);
+    this.toast(s.enabled?'Hubtel SMS notifications enabled ✓':'SMS settings saved');
   }
 
   async sendTestSMS(){
     const s=DB.get('_sms',{});
     const result=document.getElementById('sms-result');
-    if(!s.apiUser||!s.apiKey||!s.phone){ result.textContent='Please fill in API credentials and phone number first.'; result.className='sms-result fail show'; return; }
-    result.textContent='Sending…'; result.className='sms-result ok show';
-    const sent=await this._sendSMS(`✅ Test from Emmanuel's Fuel Station. SMS notifications are working!`,s.phone);
-    if(sent){ result.textContent='✅ Test SMS sent successfully!'; result.className='sms-result ok show'; }
-    else { result.textContent='❌ Failed to send. Check your API credentials and phone number.'; result.className='sms-result fail show'; }
-    setTimeout(()=>result.classList.remove('show'),6000);
+    if(!s.clientId||!s.clientSecret||!s.phone){
+      result.textContent='⚠️ Fill in Client ID, Client Secret and phone number first.';
+      result.className='sms-result fail show'; return;
+    }
+    result.textContent='Sending test SMS via Hubtel…';
+    result.className='sms-result ok show';
+    // Temporarily enable for test even if master is off
+    const tmpEnabled=s.enabled; s.enabled=true;
+    DB.set('_sms',s);
+    const sent=await this._sendSMS(
+      `✅ Test from Emmanuel's Fuel Station. Your Hubtel SMS is working perfectly!`,
+      s.phone
+    );
+    s.enabled=tmpEnabled; DB.set('_sms',s);
+    if(sent){
+      result.textContent='✅ Test SMS sent successfully via Hubtel!';
+      result.className='sms-result ok show';
+    } else {
+      result.textContent='❌ Failed. Double-check your Hubtel Client ID, Client Secret, and phone number. Ensure your Hubtel wallet has credit.';
+      result.className='sms-result fail show';
+    }
+    setTimeout(()=>result.classList.remove('show'),8000);
   }
 
   async _sendSMS(message, to){
-    const s=DB.get('_sms',{}); if(!s.enabled||!s.apiUser||!s.apiKey||!to) return false;
+    const s=DB.get('_sms',{});
+    if(!s.enabled||!s.clientId||!s.clientSecret||!to) return false;
+    // Normalise Ghanaian number: strip leading 0, add +233
+    let num=String(to).replace(/\s+/g,'');
+    if(num.startsWith('0')) num='+233'+num.slice(1);
+    if(!num.startsWith('+')) num='+'+num;
     try {
-      // Africa's Talking API — must be called from a server in production (CORS).
-      // Here we use their sandbox endpoint for testing. In production, proxy via your backend.
-      const endpoint=s.apiUser==='sandbox'
-        ? 'https://api.sandbox.africastalking.com/version1/messaging'
-        : 'https://api.africastalking.com/version1/messaging';
-      const body=new URLSearchParams({username:s.apiUser,to,message,...(s.sender?{from:s.sender}:{})});
-      const resp=await fetch(endpoint,{method:'POST',headers:{'apiKey':s.apiKey,'Content-Type':'application/x-www-form-urlencoded','Accept':'application/json'},body:body.toString()});
-      const data=await resp.json();
-      return data?.SMSMessageData?.Recipients?.[0]?.statusCode===101;
-    } catch(e){ console.warn('SMS error:',e); return false; }
+      // Hubtel SMS API v1
+      // NOTE: In production, proxy this request through your own backend to avoid CORS.
+      // Hubtel sandbox: https://devtracker.hubtel.com/
+      const creds=btoa(`${s.clientId}:${s.clientSecret}`);
+      const body={From:s.sender||'FuelApp',To:num,Content:message};
+      const resp=await fetch('https://smsc.hubtel.com/v1/messages/send',{
+        method:'POST',
+        headers:{
+          'Authorization':`Basic ${creds}`,
+          'Content-Type':'application/json',
+          'Accept':'application/json',
+        },
+        body:JSON.stringify(body),
+      });
+      if(resp.ok){
+        const data=await resp.json();
+        // Hubtel returns status 0 for success
+        return data?.status===0||data?.Status===0||resp.status===200||resp.status===201;
+      }
+      return false;
+    } catch(e){
+      console.warn('Hubtel SMS error:',e);
+      return false;
+    }
   }
 
   _notifySMS(type, detail){
     const s=DB.get('_sms',{}); if(!s.enabled) return;
+    const station="Emmanuel's Fuel Station";
     const msgs={
-      sale:(d)=>`⛽ New Sale at Emmanuel's Fuel Station\n${d}`,
-      low:(d)=>`⚠️ LOW STOCK ALERT\n${d}`,
-      user:(d)=>`👤 New User Registered\n${d}`,
+      sale: (d)=>`⛽ ${station}\nNew Sale Recorded\n${d}`,
+      low:  (d)=>`⚠️ ${station}\nLOW STOCK ALERT!\n${d}`,
+      user: (d)=>`👤 ${station}\nNew User Registered\n${d}`,
     };
     if(type==='sale'&&s.onSale) this._sendSMS(msgs.sale(detail),s.phone);
-    if(type==='low'&&s.onLow) this._sendSMS(msgs.low(detail),s.phone);
+    if(type==='low' &&s.onLow)  this._sendSMS(msgs.low(detail), s.phone);
     if(type==='user'&&s.onUser) this._sendSMS(msgs.user(detail),s.phone);
   }
 

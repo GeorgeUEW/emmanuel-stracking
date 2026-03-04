@@ -2578,7 +2578,7 @@ class App {
     document.getElementById('app').style.display='none';
 
     // Toggle between sign-in and register
-    document.getElementById('go-register').addEventListener('click',()=>{
+    document.getElementById('go-register').onclick=()=>{
       document.getElementById('auth-signin').style.display='none';
       document.getElementById('auth-register').style.display='';
       ['r-display','r-uname','r-pwd','r-cpwd'].forEach(id=>document.getElementById(id).value='');
@@ -2586,23 +2586,23 @@ class App {
       document.getElementById('r-role').value='staff';
       document.getElementById('role-staff').classList.add('selected');
       document.getElementById('role-admin').classList.remove('selected');
-    });
-    document.getElementById('go-signin').addEventListener('click',()=>{
+    };
+    document.getElementById('go-signin').onclick=()=>{
       document.getElementById('auth-register').style.display='none';
       document.getElementById('auth-signin').style.display='';
-    });
+    };
 
-    // Role card selection on register form
+    // Role card selection on register form (use onclick to avoid stacking)
     document.querySelectorAll('.role-card[data-role]').forEach(c=>{
-      c.addEventListener('click',()=>{
+      c.onclick=()=>{
         document.querySelectorAll('.role-card[data-role]').forEach(x=>x.classList.remove('selected'));
         c.classList.add('selected');
         document.getElementById('r-role').value=c.dataset.role;
-      });
+      };
     });
 
     // Sign-in submit
-    document.getElementById('login-form').addEventListener('submit',e=>{
+    document.getElementById('login-form').onsubmit=e=>{
       e.preventDefault();
       const u=document.getElementById('l-user').value.trim().toLowerCase();
       const p=document.getElementById('l-pass').value;
@@ -2610,10 +2610,10 @@ class App {
       const found=users.find(x=>x.username===u&&x.password===p);
       if(found){ this.user=found; sessionStorage.setItem('_sess',JSON.stringify(found)); this._audit('login',`"${found.display||found.username}" signed in`); this._boot(); }
       else document.getElementById('l-err').classList.add('show');
-    });
+    };
 
     // Register submit
-    document.getElementById('reg-form').addEventListener('submit',e=>{
+    document.getElementById('reg-form').onsubmit=e=>{
       e.preventDefault();
       const display=document.getElementById('r-display').value.trim();
       const uname=document.getElementById('r-uname').value.trim().toLowerCase().replace(/\s+/g,'');
@@ -2635,7 +2635,7 @@ class App {
       // Auto sign in
       this.user=newUser; sessionStorage.setItem('_sess',JSON.stringify(newUser));
       this._audit('login',`"${display}" signed in`); this._boot();
-    });
+    };
   }
 
   _boot(){
@@ -2667,6 +2667,7 @@ class App {
   }
 
   _bind(){
+    if(this._bound) return; this._bound=true;
     // Nav
     document.querySelectorAll('.nav-item[data-page]').forEach(el=>el.addEventListener('click',()=>this.nav(el.dataset.page)));
     document.getElementById('menu-btn').addEventListener('click',()=>document.getElementById('app').classList.toggle('nav-open'));
@@ -2780,7 +2781,9 @@ class App {
     this.page=page;
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.querySelectorAll('.nav-item[data-page]').forEach(l=>l.classList.toggle('active',l.dataset.page===page));
-    document.getElementById('page-'+page).classList.add('active');
+    const pageEl=document.getElementById('page-'+page);
+    if(!pageEl) return;
+    pageEl.classList.add('active');
     document.getElementById('topbar-title').textContent=({dashboard:'Dashboard',inventory:'Fuel Inventory',customers:'Customers',record:'Record Purchase',monthly:'Monthly Report',yearly:'Yearly Report',history:'Purchase History',audit:'Audit Log',settings:'Settings'})[page]||page;
     document.getElementById('app').classList.remove('nav-open');
     ({dashboard:()=>this.renderDash(),inventory:()=>this.renderInv(),customers:()=>this.renderCusts(),record:()=>this.renderRecord(),monthly:()=>this.renderMonthly(),yearly:()=>this.renderYearly(),history:()=>this.renderHist(),audit:()=>this.renderAudit(),settings:()=>this.renderSettings()})[page]?.();
